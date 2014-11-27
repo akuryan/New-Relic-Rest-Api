@@ -1,4 +1,4 @@
-New-Relic-Rest-Api
+New Relic rest API
 ==================
 
-Access New relic information from C# class library
+This repository would be used to store my development efforts to access New Relic rest API from C# code
