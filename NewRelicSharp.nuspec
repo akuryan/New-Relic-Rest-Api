@@ -13,6 +13,16 @@
     <copyright>Copyright 2014</copyright>
     <tags>new relic, rest api</tags>
     <language>en-US</language>
+    <!-- Framework dependency -->
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web" targetFramework="net40" />
+    </frameworkAssemblies>	
+    <!-- NuGet package dependency -->
+    <dependencies>
+      <dependency id="Microsoft.Bcl" version="1.1.9" />
+      <dependency id="Microsoft.Bcl.Build" version="1.0.14" />
+      <dependency id="Microsoft.Net.Http" version="2.2.28" />
+    </dependencies>	
   </metadata>
   <files>
     <file src="NewRelicSharp\bin\Release\NewRelicSharp.dll" target="lib\net45" />

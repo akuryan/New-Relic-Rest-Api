@@ -1,7 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewRelicSharp", "NewRelicSharp/NewRelicSharp.csproj", "{97693009-F619-44E4-85AD-73FF68FFB6C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewRelicSharp", "NewRelicSharp\NewRelicSharp.csproj", "{97693009-F619-44E4-85AD-73FF68FFB6C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C3880EA5-D43F-4263-B2B2-EC1B2AD92D98}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
