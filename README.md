@@ -1,7 +1,8 @@
 New Relic rest API
 ==================
 
-This repository would be used to store my development efforts to access New Relic rest API from C# code
+This repository would be used to store my development efforts to access New Relic rest API from C# code.
+This project is not endorsed or supported by New Relic.
 
 ## Authentication
 
@@ -66,3 +67,9 @@ using (var accessor = new NewRelicAccessor(ApiKey))
 	HttpResponseMessage response = accessor.Post(postCommand);
 }
 ```
+
+## Nuget and SymbolsSource
+
+[Nuget package](https://www.nuget.org/packages/NewRelicSharp/)
+
+[SymbolSource package](https://www.symbolsource.org/Public/Metadata/NuGet/Project/NewRelicSharp)
