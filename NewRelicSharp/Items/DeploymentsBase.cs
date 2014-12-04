@@ -83,7 +83,7 @@
                 data.AppendFormat(DeploymentInformationFormat, "environment", this.Environment);
             }
 
-            return data.ToString().TrimEnd('&');
+            return data.ToString();
         }
     }
 }

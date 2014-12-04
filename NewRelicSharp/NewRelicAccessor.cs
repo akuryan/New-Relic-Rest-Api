@@ -1,6 +1,10 @@
 ﻿namespace NewRelicSharp
 {
     using System;
+    using System.IO;
+    using System.Net.Http;
+
+    using NewRelicSharp.Commands.Post;
 
     /// <summary>
     /// Used to access New Relic using custom classes
@@ -17,6 +21,17 @@
         public NewRelicAccessor(string newRelicApiKey)
         {
             newRelicConnector = new NewRelicConnector(newRelicApiKey);
+        }
+
+        /// <summary>
+        /// Posts data to New Relic rest API
+        /// </summary>
+        /// <param name="postCommand"></param>
+        /// <typeparam name="TItem"></typeparam>
+        /// <returns></returns>
+        public HttpResponseMessage Post<TItem>(PostCommandBase<TItem> postCommand) where TItem : class
+        {
+            return newRelicConnector.PostData(postCommand.Query, postCommand.Item.ToString());
         }
 
         public void Dispose()

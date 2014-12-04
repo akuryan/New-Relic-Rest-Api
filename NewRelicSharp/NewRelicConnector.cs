@@ -1,6 +1,7 @@
 ﻿namespace NewRelicSharp
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Text;
     using System.Web;
@@ -46,6 +47,7 @@
         /// <returns>Returns <see cref="HttpResponseMessage"/> for Posted data</returns>
         public HttpResponseMessage PostData(string query, string data)
         {
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             var postUrl = this.EnsureFullUrl(query);
             var requestMessage = new HttpRequestMessage(HttpMethod.Post, postUrl);
 

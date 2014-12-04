@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Post\PostCommandBase.cs" />
+    <Compile Include="Commands\Post\PostDeploymentWithApplicationId.cs" />
+    <Compile Include="Commands\Post\PostDeploymentWithApplicationName.cs" />
     <Compile Include="Constants\RestApiConstants.cs" />
     <Compile Include="Items\DeploymentsApplicationId.cs" />
     <Compile Include="Items\DeploymentsApplicationName.cs" />

@@ -9,7 +9,7 @@
     public class DeploymentsApplicationId : DeploymentsBase
     {
         /// <summary>
-        /// Application name for which deployment is held
+        /// Application id for which deployment is held
         /// </summary>
         // ReSharper disable once InconsistentNaming
         public string Application_Id { get; set; }
