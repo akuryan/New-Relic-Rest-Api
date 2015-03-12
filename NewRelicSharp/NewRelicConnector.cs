@@ -1,4 +1,6 @@
-﻿namespace NewRelicSharp
+﻿using NewRelicSharp.Constants;
+
+namespace NewRelicSharp
 {
     using System;
     using System.Net;
@@ -19,12 +21,12 @@
         /// <summary>
         /// Creates httpclient to access new relic api with domain url already built-in
         /// </summary>
-        /// <param name="apiKey">Api key to be added to "x-api-key" header</param>
-        public NewRelicConnector(string apiKey)
+        /// <param name="config"></param>
+        public NewRelicConnector(NewRelicConfiguration config)
         {
             httpClient = new HttpClient();
-            newRelicApiKey = apiKey;
-            newRelicDomainUrl = "https://api.newrelic.com/";
+            newRelicApiKey = config.ApiKey;
+            newRelicDomainUrl = RestApiConstants.NewRelicHttpsUrl;
         }
 
 
@@ -58,6 +60,19 @@
             httpClient.DefaultRequestHeaders.Add("x-api-key", newRelicApiKey);
             httpClient.DefaultRequestHeaders.Add("Accept", "text/xml");
             return httpClient.PostAsync(postUrl, content).Result;
+        }
+
+        public HttpResponseMessage GetData(string query)
+        {
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+            var getUrl = this.EnsureFullUrl(query);
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, getUrl);
+
+            requestMessage.Headers.Add("x-api-key", newRelicApiKey);
+            requestMessage.Headers.Add("Accept", "text/xml");
+            httpClient.DefaultRequestHeaders.Add("x-api-key", newRelicApiKey);
+            httpClient.DefaultRequestHeaders.Add("Accept", "text/xml");
+            return httpClient.GetAsync(getUrl).Result;
         }
 
         private string EnsureFullUrl(string query)

@@ -6,8 +6,13 @@
     /// <summary>
     /// Inform New Relic about deployment, using application ID
     /// </summary>
-    public class PostDeploymentWithApplicationId : PostCommandBase<DeploymentsApplicationId>
+    public class PostDeploymentWithApplicationId : PostCommandBase
     {
+        public override string GetContent()
+        {
+            throw new System.NotImplementedException();
+        }
+
         /// <summary>
         /// Provides query to post to
         /// </summary>

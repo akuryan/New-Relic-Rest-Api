@@ -1,4 +1,6 @@
-﻿namespace NewRelicSharp.Commands.Post
+﻿using System.Net.Http;
+
+namespace NewRelicSharp.Commands.Post
 {
     using System;
 
@@ -7,33 +9,28 @@
     /// <summary>
     /// Base for all POST commands
     /// </summary>
-    /// <typeparam name="TItem"></typeparam>
-    public abstract class PostCommandBase<TItem> where TItem : class
+    public abstract class PostCommandBase : ApiCommandBase
     {
+        public override string GetQuery()
+        {
+            //as deployments.xml is somewhat outstanding - we should inlcude it here
+            return this.InitialQuery.Equals(RestApiConstants.DeploymentsUri, StringComparison.OrdinalIgnoreCase)
+                ?
+                RestApiConstants.DeploymentsUri
+                :
+                string.Concat(RestApiConstants.ApiRootV1, this.InitialQuery);
+        }
+
+        public override abstract string GetContent();
+
         /// <summary>
         /// Query to execute (without API root)
         /// </summary>
         public abstract string InitialQuery { get; }
-        
-        /// <summary>
-        /// Query to be executed
-        /// </summary>
-        public string Query
-        {
-            get
-            {
-                //as deployments.xml is somewhat outstanding - we should inlcude it here
-                return this.InitialQuery.Equals(RestApiConstants.DeploymentsUri, StringComparison.OrdinalIgnoreCase) 
-                    ? 
-                    RestApiConstants.DeploymentsUri 
-                    : 
-                    string.Concat(RestApiConstants.ApiRoot, this.InitialQuery);
-            }
-        }
 
-        /// <summary>
-        /// Class to be posted
-        /// </summary>
-        public TItem Item { get; set; }
+        public override HttpMethod Method
+        {
+            get { return HttpMethod.Post; }
+        }
     }
 }
